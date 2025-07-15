@@ -1,0 +1,11 @@
+[project]
+name = "desktop-mcp"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=1.11.0",
+    "pyautogui>=0.9.54",
+    "pygetwindow>=0.0.9",
+]
