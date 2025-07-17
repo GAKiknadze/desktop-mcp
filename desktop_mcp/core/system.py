@@ -1,5 +1,6 @@
-from typing import Protocol
+from typing import Dict
 
-class SystemController(Protocol):
-    def system_info(self):
-        pass
+
+class SystemController:
+    def get_info(self) -> Dict[str, str]:
+        return {}

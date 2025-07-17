@@ -1,7 +1,8 @@
-from typing import Protocol, Tuple
+from typing import Tuple
+import pyautogui
 
 
-class ScreenController(Protocol):
+class ScreenController:
     def get_size(self) -> Tuple[int, int]:
         """"""
-        ...
+        return pyautogui.size()

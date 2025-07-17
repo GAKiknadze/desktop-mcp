@@ -1,6 +1,6 @@
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from typing import Tuple
+from typing import Dict, Tuple
 
 from mcp.server.fastmcp import Context, FastMCP
 
@@ -12,8 +12,8 @@ async def app_lifespan(server: FastMCP) -> AsyncIterator[context.AppContext]:
     yield context.AppContext(
         keyboard=core.KeyboardController(),
         mouse=core.MouseController(),
-        # screen=core.ScreenController(),
-        # system=core.SystemController(),
+        screen=core.ScreenController(),
+        system=core.SystemController(),
         # window=core.WindowController()
     )
 
@@ -140,3 +140,31 @@ async def mouse_scroll(
     mouse: core.MouseController = ctx.request_context.lifespan_context.mouse
     mouse.scroll(amount_to_scroll, x, y)
     await ctx.debug(f"Scroll: `{amount_to_scroll, x, y}`")
+
+
+# Screen
+
+
+@mcp.tool(title="Screen | Get size", description="Get screen size")
+async def screen_get_size(ctx: Context) -> Tuple[int, int]:
+    screen: core.ScreenController = ctx.request_context.lifespan_context.screen
+    x, y = screen.get_size()
+    await ctx.debug(f"Get screen size: `{x, y}`")
+    return x, y
+
+
+# System
+
+
+@mcp.tool(title="System | Get info", description="Get system info")
+async def system_get_info(ctx: Context) -> Dict[str, str]:
+    system: core.SystemController = ctx.request_context.lifespan_context.system
+    data = system.get_info()
+    await ctx.debug(f"Get system info: `{data}`")
+    return data
+
+
+# Window
+
+
+

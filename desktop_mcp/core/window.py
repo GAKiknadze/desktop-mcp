@@ -1,7 +1,6 @@
-from typing import Protocol
 
 
-class WindowController(Protocol):
+class WindowController:
     def list(): ...
 
     def maximize(): ...

@@ -7,6 +7,6 @@ from . import core
 class AppContext:
     keyboard: core.KeyboardController
     mouse: core.MouseController
-    # screen: core.ScreenController
-    # system: core.SystemController
-    # window: core.WindowController
+    screen: core.ScreenController
+    system: core.SystemController
+    window: core.WindowController
